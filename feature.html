@@ -19,7 +19,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="assets/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/lib/bs-stepper/css/bs-stepper.min.css">
-    
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/lib/select2/css/select2.min.css">
     <link rel="stylesheet" href="assets/lib/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="assets/lib/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
@@ -202,11 +202,12 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="form-group">
-                                        <select class="duallistbox" multiple="multiple" id="emprendimientos" name="emprendimientos">
-                                            <option value="1" selected>Voleibol</option>
-                                            <option value="2" selected>Futbol Sala</option>
-                                            <option value="3">Ajedrez</option>
-                                        </select>
+                                        <select multiple="multiple" size="10" name="disciplinas[]" title="disciplinas[]">
+                                            <option value="1">Voleybol</option>
+                                            <option value="2">Fútbol Sala</option>
+                                            <option value="3">Beisbol five</option>
+                                            <option value="4" selected="selected">Softbol</option>
+                                          </select>
                                         <span id="semprendimientos"></span>
                                       </div>
                                 </div>
@@ -270,7 +271,7 @@
     <script src="assets/lib/bs-stepper/js/bs-stepper.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
-
+    <script src="assets/js/slim.min.js"></script>
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
@@ -292,6 +293,17 @@
           $('.select2bs4').select2({
             theme: 'bootstrap4'
           })
+          var demo1 = $('select[name="disciplinas[]"]').bootstrapDualListbox({
+            nonSelectedListLabel: 'Disciplinas Deportivas',
+            selectedListLabel: 'Disciplinas seleccionadas',
+            preserveSelectionOnMove: 'moved',
+            moveAllLabel: 'Move all',
+            removeAllLabel: 'Remove all'
+        });
+        $("#demoform").submit(function() {
+            alert($('[name="disciplinas[]"]').val());
+            return false;
+        });
     </script>
 </body>
 
